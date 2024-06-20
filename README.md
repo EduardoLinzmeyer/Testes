@@ -1,1 +1,1 @@
-Alguns testes de cursos variados realizados.
+Alguns testes, em Python, de cursos variados realizados.
