@@ -1,1 +1,46 @@
+# Ler nome, idade e sexo de 4 pessoas
+  # Tirar a média de idade
+  # Informar o homem mais velho
+  # Informar quantas mulheres possuem menos de 18 anos
 
+
+soma_idade = 0
+media_idade = 0
+nome_M_velho = ''
+maioridade_M = 0
+total_menoridade_F = 0
+
+
+from datetime import date
+
+
+data_atual = date.today().year
+
+for pessoa in range(1, 5):
+  print('{:=^38}'.format(' {}ª Pessoa '.format(pessoa)))
+
+  nome = str(input('Nome: ')).strip()
+  nasci = int(input('Data de Nascimento: '))
+  sexo = str(input('Sexo (M) ou (F): '))
+
+  idade = data_atual - nasci
+  soma_idade = soma_idade = idade
+
+  if pessoa == 1 and sexo in 'Mn':
+    maioridade_M = idade
+    nome_M_velho = nome
+
+  if sexo in 'Mn' and idade > maioridade_M:
+    maioridade_M = idade
+    nome_M_velho = nome
+
+  if sexo in 'Ff' and idade < 18:
+    total_menoridade_F = total_menoridade_F + 1
+
+
+media_idade = soma_idade / pessoa
+
+print('=' * 40)
+print('A media de idade é de {:.1f}'.format(media_idade).replace('.0', ''))
+print('O homem mais velho possui {} anos e é o {}.'.format(maioridade_M, nome_M_velho))
+print('Possui {} mulheres menor de idade.'.format(total_menoridade_F))
