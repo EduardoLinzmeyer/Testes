@@ -1,0 +1,58 @@
+# Jogo de dados onde se adivinha o valor que tirou
+  # Ter opção de "Jogar Novamente"
+  # Contar quantas tentativas foram feitas até acertar
+
+
+from random import randint
+from time import sleep
+
+contador = 0
+derrota = 0
+num = 1
+opcao = 'S'
+
+
+print('{:=^38}'.format(' Jogo de Dados '))
+
+print('Adivinhe o n° de 1 a 6 que sairá no dado!')
+numRandom = randint(1, 6)
+sleep(0.25)
+
+while opcao == 'S':
+
+  num = int(input('Você apostará no n°: '))
+  sleep(0.5)
+
+  if num >= 1 and num <= 6:
+
+    print('{: ^38}'.format(' Lançando o dado '))
+    sleep(1)
+
+    if num != numRandom:
+
+      print('O n° que saiu no dado foi {}!'.format(numRandom))
+      print('Você ERROU!')
+
+      derrota = derrota + 1
+      contador = contador + 1
+
+      opcao = str(input('Deseja tentar novamente? [S/N]: ')).strip().upper()[0]
+      print('{:-^38}'.format('-'))
+
+    else:
+
+      print('O n° que saiu no dado foi {}!'.format(numRandom))
+      print('Você ACERTOU!')
+
+      contador = contador + 1
+
+      print('Você teve {} tentativas erradas até acertar.'.format(derrota))
+
+      break
+
+  else:
+
+    print('N° inválido!')
+    opcao = str(input('Deseja tentar novamente? [S/N]: ')).strip().upper()[0]
+
+print('Você jogou {} vezes.'.format(contador))
