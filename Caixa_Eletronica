@@ -1,0 +1,44 @@
+from time import sleep
+
+print('{:=^45}'.format(' CAIXA ELETRÔNICO '))
+
+saque = int(input('Informe o valor que deseja sacar: R$'))
+if saque < 0:
+  print('Valor INVÁLIDO!')
+  saque = int(input('Informe o valor que deseja sacar: R$'))
+  print('{:=^45}'.format(''))
+
+total = saque
+#Referencie a amior cédula
+cedula = 50
+total_cedula = 0
+
+print('Contando as cédulas...')
+print('{:=^45}'.format(''))
+sleep(0.75)
+
+while True:
+  # Elimina as maiores quantias possíveis para cada cédula
+  if total >= cedula:
+    total = total - cedula
+    total_cedula = total_cedula + 1
+
+  else:
+    # Só mostra se tiver cédulas do valor
+    if total_cedula > 0:
+      print(f'Total de {total_cedula} cédulas de R$ {cedula}.')
+
+    if cedula == 50:
+      cedula = 20
+    elif cedula == 20:
+      cedula = 10
+    elif cedula == 10:
+      cedula = 1
+
+    total_cedula = 0
+
+    if total == 0:
+      break
+
+print('{:=^45}'.format(''))
+print('Saque finalizado! Retire as cédulas.')
